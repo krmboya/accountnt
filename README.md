@@ -1,2 +1,3 @@
 # accountt
-Personal accountant
+
+An automated spending accountant
