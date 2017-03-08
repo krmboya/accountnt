@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Core of the application"""
+
 from collections import namedtuple
 
 # Entities
