@@ -3,19 +3,37 @@
 from collections import namedtuple
 
 # Entities
-User = namedtuple('User', ['id', 'name'])
-Category = namedtuple('Category', ['name'])
-UserCategory = namedtuple('UserCategory', ['user_id', 'categories'])
+User = namedtuple('User', ['uid', 'name'])
+UserCategory = namedtuple('UserCategory', ['user_id', 'category_id'])
+
+
+class Category(object):
+
+    def __init__(self, name, uid=None):
+        self.uid = uid
+        self.name = name
+
+    @staticmethod
+    def normalized_name(name):
+        """Standardizes category name format"""
+
+        return " ".join(name.split()).title()
 
 
 # Use Cases
-class CategoryUsecase(object):
-    def add_category(self, name, user_id):
+class AddCategoryUsecase(object):
 
-        if not self.category_objects.exists(name):
-            category = self.category_objects.add(name)
+    def __init__(self):
+        pass
 
-        user_categories = self.user_category_objects.get(user_id)
-        user_categories.categories.append(category)
+    def execute(self, category_name, user_id):
 
-        # todo: check existing user categories
+        category_name = Category.normalized_name(category_name)
+        category, __ = self.category_objects.get_or_create(category_name)
+
+        if self.user_category_objects.exists(
+                user_id, category.uid):
+            return "You've already added '{}'".format(category.name)
+
+        self.user_category_objects.add(user_id, category.uid)
+        return "Category '{}' has been added".format(category.name)
