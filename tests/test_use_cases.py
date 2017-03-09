@@ -4,7 +4,7 @@ import unittest
 
 from mock import Mock
 
-from accountnt import use_cases as usc, entities as ent
+from accountnt import use_cases as usc, entities as entt
 
 
 # mock objects
@@ -24,7 +24,7 @@ class AddCategoryTestCase(unittest.TestCase):
 
         # prepare mock objects
         catg_store.get_or_create.return_value = (
-            ent.Category(category_name, 2),
+            entt.Category(category_name, 2),
             True)
 
         user_catg_store.exists.return_value = False
