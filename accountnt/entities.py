@@ -13,7 +13,7 @@ class Category(object):
 
     def __init__(self, name, uid=None):
         self.uid = uid
-        self.name = name
+        self.name = self.normalized_name(name)
 
     @staticmethod
     def normalized_name(name):
