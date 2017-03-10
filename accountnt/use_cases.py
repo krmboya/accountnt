@@ -10,7 +10,7 @@ class AddCategoryUseCase(object):
         self.category_store = category_store
         self.user_category_store = user_category_store
 
-    def execute(self, category_name, user_id):
+    def execute_with(self, category_name, user_id):
 
         category_name = entities.Category.normalized_name(category_name)
         category, __ = self.category_store.get_or_create(category_name)

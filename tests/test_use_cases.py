@@ -32,7 +32,7 @@ class AddCategoryTestCase(unittest.TestCase):
         add_catg = usc.AddCategoryUseCase(
             catg_store, user_catg_store)
 
-        add_catg.execute("motor maintenance", user_id)
+        add_catg.execute_with("motor maintenance", user_id)
 
         catg_store.get_or_create.assert_called_with("Motor Maintenance")
 
