@@ -31,8 +31,9 @@ class AddCategoryTestCase(unittest.TestCase):
         self.use_case.user_category_exists.return_value = False
 
         # execute use case
-        self.use_case.execute_with("motor maintenance", user_id)
+        self.use_case.execute_with(category_name, user_id)
 
         # assert methods
-        self.use_case.get_or_create.assert_called_with("Motor Maintenance")
+        category_name = ent.Category.normalized_name(category_name)
+        self.use_case.get_or_create.assert_called_with(category_name)
         self.use_case.add_user_category.assert_called_with(1, 2)
