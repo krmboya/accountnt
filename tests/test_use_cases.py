@@ -10,15 +10,14 @@ from accountnt import use_cases as usc, entities as ent
 class AddCategoryTestCase(unittest.TestCase):
 
     class UseCase(usc.AddCategoryUseCase):
-        pass
+        add_user_category = Mock()
+        get_or_create = Mock()
+        user_category_exists = Mock()
 
     def setUp(self):
 
         # create a use case subclass with mocked methods
         self.use_case = self.__class__.UseCase()
-
-        # todo: patch relevant use case methods
-        # to make the test below work
 
     def test_category_added(self):
         """Tests that a new category is successfully added"""
@@ -26,12 +25,14 @@ class AddCategoryTestCase(unittest.TestCase):
         category_name, user_id = "motor maintenance", 1
 
         # prepare mock objects
-        self.user_case.get_or_create.return_value = ent.Category(
+        self.use_case.get_or_create.return_value = ent.Category(
             category_name, 2)
 
+        self.use_case.user_category_exists.return_value = False
+
         # execute use case
-        self.user_case.execute_with("motor maintenance", user_id)
+        self.use_case.execute_with("motor maintenance", user_id)
 
         # assert methods
         self.use_case.get_or_create.assert_called_with("Motor Maintenance")
-        self.use_case.add.assert_called_with(1, 2)
+        self.use_case.add_user_category.assert_called_with(1, 2)
