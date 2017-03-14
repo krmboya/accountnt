@@ -4,8 +4,7 @@
 import io
 import os
 
-import entities
-import use_cases
+from accountnt import entities, use_cases
 
 
 def ensure_dir(dirname):

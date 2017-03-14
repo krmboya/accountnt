@@ -5,9 +5,8 @@ import io
 import tempfile
 import os
 
-from accountnt import (
-    commandline_adapters as cmd_adapters, entities
-)
+from accountnt import entities
+from adapters import commandline_adapters as cmd_adapters
 
 
 class AddCategoryFileSystemTestCase(unittest.TestCase):
