@@ -7,4 +7,5 @@ An automated spending accountant
 1. Add a Spending Category
 
     user: add cat professional services
+
     acct: Category 'Professional Services' has been added
