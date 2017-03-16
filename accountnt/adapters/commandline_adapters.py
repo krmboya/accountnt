@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Adapt use cases for the commandline interpreter"""
+"""Override use cases for the commandline environment"""
 import io
 import os
 
@@ -22,7 +22,7 @@ def ensure_file(filename):
 class AddCategory(use_cases.AddCategoryUseCase):
 
     def __init__(self, storage_directory):
-
+        """Initializes storage"""
         self._categories_filename = "categories.txt"
         self._user_categories_filename = "ucategories.txt"
 
@@ -43,7 +43,9 @@ class AddCategory(use_cases.AddCategoryUseCase):
         ensure_file(self.user_categories_file)
 
     def get_or_create(self, category_name):
+        """Get a category via its name
 
+        Creates it if it doesn't exist"""
         with io.open(self.categories_file, 'r+t') as f:
 
             for i, line in enumerate(f):
@@ -55,7 +57,7 @@ class AddCategory(use_cases.AddCategoryUseCase):
             return entities.Category(category_name, i+1)
 
     def user_category_exists(self, user_id, category_id):
-
+        """Checks that user has added the particular category"""
         with io.open(self.user_categories_file) as f:
             matching_category = [line for line in f
                                  if line.strip() == str(category_id)]
@@ -63,6 +65,6 @@ class AddCategory(use_cases.AddCategoryUseCase):
             return len(matching_category) > 0
 
     def add_user_category(self, user_id, category_id):
-
+        """Associates the category with the user"""
         with io.open(self.user_categories_file, 'at') as f:
             f.write(unicode(category_id) + "\n")

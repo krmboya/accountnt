@@ -27,5 +27,6 @@ class CommandTestCase(unittest.TestCase):
 
         command = "somerandomcommand"
 
+        # should raise a missing exception
         with self.assertRaises(handlers.CommandNotFound):
             handlers.get(command)

@@ -10,6 +10,11 @@ class AddCategoryUseCase:
     __metaclass__ = abc.ABCMeta
 
     def execute_with(self, category_name, user_id):
+        """Executes the use case with the provided arguments
+
+        The abstract helper methods should be overriden with the
+        actual functionality
+        """
 
         category_name = entities.Category.normalized_name(category_name)
         category = self.get_or_create(category_name)
