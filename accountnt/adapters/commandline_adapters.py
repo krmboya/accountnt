@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Adapt use cases for the filesystem"""
+"""Adapt use cases for the commandline interpreter"""
 import io
 import os
 
