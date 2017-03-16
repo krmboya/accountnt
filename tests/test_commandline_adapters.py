@@ -6,7 +6,7 @@ import tempfile
 import os
 
 from accountnt import entities
-from adapters import commandline_adapters as cmd_adapters
+from accountnt.adapters import commandline_adapters as cmd
 
 
 class AddCategoryFileSystemTestCase(unittest.TestCase):
@@ -17,7 +17,7 @@ class AddCategoryFileSystemTestCase(unittest.TestCase):
             tempfile.gettempdir(), ".accountnt")
         category_name = 'professional services'
 
-        use_case = cmd_adapters.AddCategory(storage_dir)
+        use_case = cmd.AddCategory(storage_dir)
 
         use_case.execute_with(category_name, 1001)
         normalized_name = entities.Category.normalized_name(category_name)
