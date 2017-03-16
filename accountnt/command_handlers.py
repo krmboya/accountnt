@@ -21,6 +21,7 @@ def get(command_name):
     """Retrieves handler for command `command_name`
 
     Raises `CommandNotFound` exception when missing"""
+    command_name = command_name.lower()
     try:
         return command_handlers[command_name]
     except KeyError:

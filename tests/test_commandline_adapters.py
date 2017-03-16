@@ -16,7 +16,7 @@ class AddCategoryFileSystemTestCase(unittest.TestCase):
         # a path to tmp storage location
         storage_dir = os.path.join(
             tempfile.gettempdir(), ".accountnt")
-        
+
         category_name = 'professional services'
 
         # initialize use case with tmp storage

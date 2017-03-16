@@ -6,6 +6,10 @@ import abc
 import entities
 
 
+catg_already_added_msg = "You've already added '{}'"
+catg_successfully_added_msg = "Category '{}' has been added"
+
+
 class AddCategoryUseCase:
     __metaclass__ = abc.ABCMeta
 
@@ -20,11 +24,10 @@ class AddCategoryUseCase:
         category = self.get_or_create(category_name)
 
         if self.user_category_exists(user_id, category.uid):
-            msg = "You've already added '{}'"
-            return msg.format(category.name)
+            return catg_already_added_msg.format(category.name)
 
         self.add_user_category(user_id, category.uid)
-        return "Category '{}' has been added".format(category.name)
+        return catg_successfully_added_msg.format(category.name)
 
     @abc.abstractmethod
     def get_or_create(self, category_name):
