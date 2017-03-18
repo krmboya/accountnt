@@ -1,4 +1,6 @@
-# accountnt ![build status][1]
+# accountnt
+
+![build status][1]
 
 An automated spending accountant
 
