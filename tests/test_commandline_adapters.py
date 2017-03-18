@@ -9,7 +9,7 @@ from accountnt import entities
 from accountnt.adapters import commandline_adapters as cmd
 
 
-class AddCategoryFileSystemTestCase(unittest.TestCase):
+class AddCategoryCommandlineTestCase(unittest.TestCase):
 
     def test_can_add_user_category(self):
 

@@ -48,6 +48,7 @@ class AddCategory(use_cases.AddCategoryUseCase):
         Creates it if it doesn't exist"""
         with io.open(self.categories_file, 'r+t') as f:
 
+            i = 0
             for i, line in enumerate(f):
                 if line == category_name:
                     return entities.Category(category_name, i)
