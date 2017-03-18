@@ -2,7 +2,10 @@ dependencies:
   override:
     - pip install -U pip
     - pip install -r requirements-dev.txt
+    - pip install codecov
     
 test:
   override:
     - make test
+  post:
+    - codecov

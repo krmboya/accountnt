@@ -1,4 +1,4 @@
 test:
-	nosetests
+	nosetests --with-coverage
 
 .PHONY: test
